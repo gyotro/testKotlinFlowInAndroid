@@ -1,5 +1,7 @@
 package com.example.flowapp
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -50,5 +52,13 @@ class FlowViewModel: ViewModel() {
             currentValue--
             emit(currentValue)
         }
+    }
+
+    // Test with LiveData
+    private val _liveData = MutableLiveData("Initial Value")
+    val liveData: LiveData<String> = _liveData
+
+    fun changeLiveData() {
+        _liveData.value = "Live Data Modified!!"
     }
 }
